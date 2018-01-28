@@ -14,3 +14,4 @@ To build, clone the repository and...
 npm install
 npm start
 ```
+When viewing, hit `s` for speaker notes, hit `f` for full screen.
