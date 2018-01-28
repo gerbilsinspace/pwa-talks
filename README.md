@@ -7,7 +7,7 @@ Part 2: Push notifications and Indexed DB
 
 ## Set up and build
 
-The talks use Reveal.js https://github.com/hakimel/reveal.js/#dependencies
+The talks use Reveal.js https://github.com/hakimel/reveal.js
 To build, clone the repository and...
 
 ```
