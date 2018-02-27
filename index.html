@@ -4,17 +4,199 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>PWA Talks</title>
+  <title>Taking your website offline</title>
 
-  <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
-  <link rel="stylesheet" href="node_modules/reveal.js/css/theme/black.css">
+  <link rel="stylesheet" href="../node_modules/reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="../node_modules/reveal.js/css/theme/black.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="../node_modules/reveal.js/lib/css/zenburn.css">
 
   </head>
   <body>
-  <div class="reveal" style="margin: 10px;">
-    <h3>Taking your website offline</h3>
-    <p><a href="part-1">Part 1: The service worker and offline caching techniques</a></p>
-    <p><a href="part-2">Part 2: Push notifications and Indexed DB</a></p>
-  </div>
+    <div class="reveal">
+      <div class="slides" style="font-size: 0.8em">
+
+        <section>
+          <h3>Taking your website offline</h3>
+          <ul>
+            <li>2 day Google training</li>
+            <li>Progressive Web App Overview</li>
+            <li>Service Worker</li>
+            <li>Cache API</li>
+          </ul>
+          <aside class="notes">
+            Do we need this section? how do we introduce the talk.
+          </aside>
+        </section>
+
+        <section>
+          <h3>What are Progressive Web Apps?</h3>
+          <ul>
+            <li>Just a web site/app</li>
+            <li>Saved to home screen, no browser chrome</li>
+            <li>Offline caching</li>
+            <li>HTML5 APIs e.g. notifications API</li>
+          </ul>
+          <aside class="notes">
+            Mention Mr P's slides are available for a higher level overview.
+          </aside>
+        </section>
+
+        <section>
+          <h3>App manifest</h3>
+          <ul>
+            <li>Defines basic config and custom icons</li>
+            <li>Browser decides whether to prompt user to add to home screen</li>
+          </ul>
+          <pre>
+            <code data-trim>
+{
+  "name": "Digital Showcase",
+  "short_name": "Showcase",
+  "icons": [{
+    "src": "images/touch/icon-128x128.png",
+    "sizes": "128x128",
+    "type": "image/png"
+  }],
+  "start_url": "/homescreen",
+  "display": "standalone",
+  "background_color": "#3E4EB8",
+  "theme_color": "#2F3BA2"
+}
+            </code>
+          </pre>
+          <aside class="notes">
+            How exactly does the browser decide?
+          </aside>
+        </section>
+
+        <section>
+          <h3>Service Worker</h3>
+          <ul>
+            <li>A type of 'web worker'</li>
+            <li>Acts as network proxy</li>
+            <li>Event driven (install, fetch etc...)</li>
+          </ul>
+          <pre>
+            <code data-trim>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+            </code>
+          </pre>
+          <aside class="notes">
+            After this probably go into chrome and show dev tools picking up 
+            the service worker and app manifest?
+          </aside>
+        </section>
+
+        <section>
+          <h3>Cache API</h3>
+          <ul>
+            <li>Storage for request / response objects</li>
+            <li>Available directly to the sevice worker</li>
+            <li>Developer responsible for defining and maintaining cache</li>
+          </ul>
+          <pre>
+            <code data-trim>
+caches.open('showcase-v1').then(cache =>
+  cache.addAll([
+    'assets/piksel.png',
+    'css/main.css',
+    'js/main.js'
+  ])
+);
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Caching Techniques</h3>
+          <ul>
+            <li>On install (application shell, easy win 😄)</li>
+            <li>Cache first</li>
+            <li>Network first</li>
+          </ul>
+          <aside class="notes">
+            After this slide we then show some code, show dev tools cache,
+            kill the server and watch the app still work!
+          </aside>
+        </section>
+        
+        <section>
+          <h3>Indexed DB</h3>
+          <ul>
+            <li>Transactional object store</li>
+            <li>Asynchronous</li>
+          </ul>
+          <pre>
+            <code data-trim>
+              if ('indexedDB' in window) {
+                // do stuff
+              }
+            </code>
+          </pre>
+          <aside class="notes">
+            What else is noteworthy, do we show another quick demo?
+          </aside>
+        </section>
+        
+        <section>
+          <h3>Push Notifications</h3>
+          <ul>
+            <li>Push API and Notifications API</li>
+            <li>Must first request permission</li>
+            <li>Service Worker subscribes to notifications</li>
+            <li>Server sends message to unique endpoint</li>
+          </ul>
+          <pre>
+            <code data-trim>
+              Notification.requestPermission(status =>
+                console.log('Notification permission status:', status);
+              );
+            </code>
+          </pre>
+          <aside class="notes">
+            We should probably split this into 2 slides, one of notifications and one of push?
+          </aside>
+        </section>
+        
+        <section>
+          <h3>Thanks, and some useful links</h3>
+          <ul>
+            <li><a href="https://jakearchibald.github.io/isserviceworkerready/">Is Service Worker Ready?</a></li>
+            <li><a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a></li>
+          </ul>
+          <pre>
+            <code data-trim>
+              if (wentWell) {
+                applause();
+              }
+            </code>
+          </pre>
+          <aside class="notes">
+            We should probably split this into 2 slides, one of notifications and one of push?
+          </aside>
+        </section>
+      </div>
+    </div>
+
+    <script src="../node_modules/reveal.js/lib/js/head.min.js"></script>
+    <script src="../node_modules/reveal.js/js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: '../node_modules/reveal.js/plugin/markdown/marked.js' },
+          { src: '../node_modules/reveal.js/plugin/markdown/markdown.js' },
+          { src: '../node_modules/reveal.js/plugin/notes/notes.js', async: true },
+          { src: '../node_modules/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
   </body>
 </html>
