@@ -19,12 +19,7 @@
 
         <section>
           <h3>Taking your website offline</h3>
-          <ul>
-            <li>2 day Google training</li>
-            <li>Progressive Web App Overview</li>
-            <li>Service Worker</li>
-            <li>Cache API</li>
-          </ul>
+          <h4>Everything you need for a great offline experience</h4>
           <aside class="notes">
             Do we need this section? how do we introduce the talk.
           </aside>
@@ -33,10 +28,10 @@
         <section>
           <h3>What are Progressive Web Apps?</h3>
           <ul>
-            <li>Just a web site/app</li>
-            <li>Saved to home screen, no browser chrome</li>
-            <li>Offline caching</li>
-            <li>HTML5 APIs e.g. notifications API</li>
+            <li class="fragment">Just a web site/app</li>
+            <li class="fragment">Saved to home screen, no browser chrome</li>
+            <li class="fragment">Offline caching</li>
+            <li class="fragment">HTML5 APIs e.g. notifications API</li>
           </ul>
           <aside class="notes">
             Mention Mr P's slides are available for a higher level overview.
@@ -73,18 +68,18 @@
 
         <section>
           <h3>Service Worker</h3>
-          <ul>
-            <li>A type of 'web worker'</li>
-            <li>Acts as network proxy</li>
-            <li>Event driven (install, fetch etc...)</li>
-          </ul>
           <pre>
             <code data-trim>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js');
-}
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('service-worker.js');
+              }
             </code>
           </pre>
+          <ul>
+            <li class="fragment">A type of 'web worker'</li>
+            <li class="fragment">Acts as network proxy</li>
+            <li class="fragment">Event driven (install, fetch etc...)</li>
+          </ul>
           <aside class="notes">
             After this probably go into chrome and show dev tools picking up 
             the service worker and app manifest?
@@ -93,30 +88,30 @@ if ('serviceWorker' in navigator) {
 
         <section>
           <h3>Cache API</h3>
-          <ul>
-            <li>Storage for request / response objects</li>
-            <li>Available directly to the sevice worker</li>
-            <li>Developer responsible for defining and maintaining cache</li>
-          </ul>
           <pre>
             <code data-trim>
-caches.open('showcase-v1').then(cache =>
-  cache.addAll([
-    'assets/piksel.png',
-    'css/main.css',
-    'js/main.js'
-  ])
-);
+              caches.open('showcase-v1').then(cache =>
+                cache.addAll([
+                  'assets/piksel.png',
+                  'css/main.css',
+                  'js/main.js'
+                ])
+              );
             </code>
           </pre>
+          <ul>
+            <li class="fragment">Storage for request / response objects</li>
+            <li class="fragment">Available in the sevice worker</li>
+            <li class="fragment">Developer responsible for defining and maintaining cache</li>
+          </ul>
         </section>
 
         <section>
-          <h3>Caching Techniques</h3>
+          <h3>Caching Strategies</h3>
           <ul>
-            <li>On install (application shell, easy win 😄)</li>
-            <li>Cache first</li>
-            <li>Network first</li>
+            <li class="fragment">On install (application shell, easy win 😄)</li>
+            <li class="fragment">Cache first</li>
+            <li class="fragment">Network first</li>
           </ul>
           <aside class="notes">
             After this slide we then show some code, show dev tools cache,
@@ -126,10 +121,6 @@ caches.open('showcase-v1').then(cache =>
         
         <section>
           <h3>Indexed DB</h3>
-          <ul>
-            <li>Transactional object store</li>
-            <li>Asynchronous</li>
-          </ul>
           <pre>
             <code data-trim>
               if ('indexedDB' in window) {
@@ -137,6 +128,10 @@ caches.open('showcase-v1').then(cache =>
               }
             </code>
           </pre>
+          <ul>
+            <li class="fragment">Transactional object store</li>
+            <li class="fragment">Asynchronous?</li>
+          </ul>
           <aside class="notes">
             What else is noteworthy, do we show another quick demo?
           </aside>
@@ -144,12 +139,6 @@ caches.open('showcase-v1').then(cache =>
         
         <section>
           <h3>Push Notifications</h3>
-          <ul>
-            <li>Push API and Notifications API</li>
-            <li>Must first request permission</li>
-            <li>Service Worker subscribes to notifications</li>
-            <li>Server sends message to unique endpoint</li>
-          </ul>
           <pre>
             <code data-trim>
               Notification.requestPermission(status =>
@@ -157,6 +146,12 @@ caches.open('showcase-v1').then(cache =>
               );
             </code>
           </pre>
+          <ul>
+            <li class="fragment">Push API and Notifications API</li>
+            <li class="fragment">Must first request permission</li>
+            <li class="fragment">Service Worker subscribes to notifications</li>
+            <li class="fragment">Server sends message to unique endpoint</li>
+          </ul>
           <aside class="notes">
             We should probably split this into 2 slides, one of notifications and one of push?
           </aside>
@@ -176,7 +171,7 @@ caches.open('showcase-v1').then(cache =>
             </code>
           </pre>
           <aside class="notes">
-            We should probably split this into 2 slides, one of notifications and one of push?
+            Do we bother with useful links? Where shall we host the slides?
           </aside>
         </section>
       </div>
