@@ -29,7 +29,8 @@
           <h3>Taking your website offline</h3>
           <h4>Everything you need for a great offline experience</h4>
           <aside class="notes">
-            Do we need this section? how do we introduce the talk.
+            Brief introduction explaining what we are going to talk about.
+            - people will ask about browser support?
           </aside>
         </section>
 
@@ -40,6 +41,7 @@
             <li class="fragment">Saved to home screen, no browser chrome</li>
             <li class="fragment">Offline caching</li>
             <li class="fragment">HTML5 APIs e.g. notifications API</li>
+            <li class="fragment">Gaining support (Google, Microsoft, Apple soon)</li>
           </ul>
           <aside class="notes">
             Mention Mr P's slides are available for a higher level overview.
@@ -50,7 +52,7 @@
           <h3>App manifest</h3>
           <ul>
             <li>Defines basic config and custom icons</li>
-            <li>Browser decides whether to prompt user to add to home screen</li>
+            <li>Browser will prompt user to add to home screen (https only)</li>
           </ul>
           <pre>
             <code data-trim>
@@ -70,7 +72,6 @@
             </code>
           </pre>
           <aside class="notes">
-            How exactly does the browser decide?
           </aside>
         </section>
 
@@ -79,7 +80,7 @@
           <pre>
             <code data-trim>
               if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('service-worker.js');
+                navigator.serviceWorker.register('path/to/service-worker.js');
               }
             </code>
           </pre>
@@ -89,8 +90,9 @@
             <li class="fragment">Event driven (install, fetch etc...)</li>
           </ul>
           <aside class="notes">
-            After this probably go into chrome and show dev tools picking up 
-            the service worker and app manifest?
+            Briefly explain what a web worker is...
+            Any more bullet points?
+            Examples of the different events.
           </aside>
         </section>
 
@@ -112,6 +114,14 @@
             <li class="fragment">Available in the sevice worker</li>
             <li class="fragment">Developer responsible for defining and maintaining cache</li>
           </ul>
+          <aside class="notes">
+            Dont we need to cache index.html?
+            Is cache based on top level domain?
+            when exactly are these added? what if not loaded yet?
+            - do we need second point?
+            - when exactly would you clear down the cache etc
+            - cache expiry date?
+          </aside>
         </section>
 
         <section>
@@ -122,8 +132,8 @@
             <li class="fragment">Network first</li>
           </ul>
           <aside class="notes">
-            After this slide we then show some code, show dev tools cache,
-            kill the server and watch the app still work!
+            DEMO
+
           </aside>
         </section>
         
@@ -138,15 +148,19 @@
           </pre>
           <ul>
             <li class="fragment">Transactional object store</li>
+            <li class="fragment">Good for structured, or larger sets of data</li>
             <li class="fragment">Asynchronous?</li>
           </ul>
           <aside class="notes">
-            What else is noteworthy, do we show another quick demo?
+            What exactly does a Transactional object store mean?
+            Is Asynchronous worth a mention?
+            Any use cases?
+            Show a DEMO
           </aside>
         </section>
-        
+
         <section>
-          <h3>Push Notifications</h3>
+          <h3>Notifications API</h3>
           <pre>
             <code data-trim>
               Notification.requestPermission(status =>
@@ -155,23 +169,29 @@
             </code>
           </pre>
           <ul>
-            <li class="fragment">Push API and Notifications API</li>
-            <li class="fragment">Must first request permission</li>
-            <li class="fragment">Service Worker subscribes to notifications</li>
-            <li class="fragment">Server sends message to unique endpoint</li>
+            <li class="fragment">Allows displaying of custom notifications</li>
+            <li class="fragment">Requires user permission</li>
+            <li class="fragment">Can be sent from web page or service worker</li>
           </ul>
           <aside class="notes">
-            We should probably split this into 2 slides, one of notifications and one of push?
           </aside>
         </section>
-        
+
         <section>
-          <h3>Thanks, and some useful links</h3>
+          <h3>Push API</h3>
           <ul>
-            <li><a href="https://jakearchibald.github.io/isserviceworkerready/">Is Service Worker Ready?</a></li>
-            <li><a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a></li>
+            <li class="fragment">Allows app to recieve messages, even when not loaded</li>
+            <li class="fragment">Requires active service worker</li>
+            <li class="fragment">Generates unique subscription id and endpoint</li>
           </ul>
-          <pre>
+          <aside class="notes">
+            Will probably be asked how this would be handled on the server side?
+          </aside>
+        </section>
+
+        <section>
+          <h3>Thanks, any questions?</h3>
+          <pre class="fragment">
             <code data-trim>
               if (wentWell) {
                 applause();
@@ -179,7 +199,6 @@
             </code>
           </pre>
           <aside class="notes">
-            Do we bother with useful links? Where shall we host the slides?
           </aside>
         </section>
       </div>
