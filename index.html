@@ -29,30 +29,36 @@
           <h3>Taking your website offline</h3>
           <h4>Everything you need for a great offline experience</h4>
           <aside class="notes">
-            Brief introduction explaining what we are going to talk about.
-            - people will ask about browser support?
+            - welcome<br />
+            - would like to talk to you about taking your webs...<br />
+            - went to a 2 day training course
           </aside>
         </section>
 
         <section>
-          <h3>What are Progressive Web Apps?</h3>
+          <h3>What are Progressive Web Apps Anyway?</h3>
+          <blockquote>
+            Progressive web apps (PWAs) take traditional web sites/applications — with all of the advantages the web brings — and add
+            a number of features that give them many of the user experience advantages of native apps.
+          </blockquote>
           <ul>
-            <li class="fragment">Just a web site/app</li>
             <li class="fragment">Saved to home screen, no browser chrome</li>
             <li class="fragment">Offline caching</li>
-            <li class="fragment">HTML5 APIs e.g. notifications API</li>
-            <li class="fragment">Gaining support (Google, Microsoft, Apple soon)</li>
+            <li class="fragment">Push notifications</li>
           </ul>
           <aside class="notes">
-            Mention Mr P's slides are available for a higher level overview.
+            - good browser support<br />
+             Saved to home screen, no browser chrome<br />
+            Offline caching<br />
+            Push notifications
           </aside>
         </section>
 
         <section>
           <h3>App manifest</h3>
           <ul>
-            <li>Defines basic config and custom icons</li>
-            <li>Browser will prompt user to add to home screen (https only)</li>
+            <li>Defines app name and custom icons</li>
+            <li>If present (and secure), browser will prompt to add to home screen</li>
           </ul>
           <pre>
             <code data-trim>
@@ -72,132 +78,76 @@
             </code>
           </pre>
           <aside class="notes">
+            - all new web apis require https or localhost<br />
+            - next is the most important piece
           </aside>
         </section>
 
         <section>
           <h3>Service Worker</h3>
-          <pre>
-            <code data-trim>
-              if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('path/to/service-worker.js');
-              }
-            </code>
-          </pre>
-          <ul>
-            <li class="fragment">A type of 'web worker'</li>
-            <li class="fragment">Acts as network proxy</li>
-            <li class="fragment">Event driven (install, fetch etc...)</li>
-          </ul>
+          <blockquote>
+            Service workers essentially act as proxy servers that sit between web applications, the browser, and the network (when available).
+            They are intended, among other things, to enable the creation of effective offline experiences.
+          </blockquote>
           <aside class="notes">
-            Briefly explain what a web worker is...
-            Any more bullet points?
-            Examples of the different events.
+            - have access to some apis, push, notification, fetch, cache<br />
+            - registered per origin<br />
+            - remain active when web page is not loaded<br />
+            - main use case is to intercept network requests
           </aside>
         </section>
 
         <section>
           <h3>Cache API</h3>
-          <pre>
-            <code data-trim>
-              caches.open('showcase-v1').then(cache =>
-                cache.addAll([
-                  'assets/piksel.png',
-                  'css/main.css',
-                  'js/main.js'
-                ])
-              );
-            </code>
-          </pre>
           <ul>
-            <li class="fragment">Storage for request / response objects</li>
-            <li class="fragment">Available in the sevice worker</li>
-            <li class="fragment">Developer responsible for defining and maintaining cache</li>
+            <li>Browser storage for request / response objects</li>
+            <li>Developer responsible for defining and maintaining cache</li>
           </ul>
           <aside class="notes">
-            Dont we need to cache index.html?
-            Is cache based on top level domain?
-            when exactly are these added? what if not loaded yet?
-            - do we need second point?
-            - when exactly would you clear down the cache etc
-            - cache expiry date?
-          </aside>
-        </section>
-
-        <section>
-          <h3>Caching Strategies</h3>
-          <ul>
-            <li class="fragment">On install (application shell, easy win 😄)</li>
-            <li class="fragment">Cache first</li>
-            <li class="fragment">Network first</li>
-          </ul>
-          <aside class="notes">
-            DEMO
-
+            - what you cache, when you cache it<br />
+            -- demo
           </aside>
         </section>
         
         <section>
           <h3>Indexed DB</h3>
-          <pre>
-            <code data-trim>
-              if ('indexedDB' in window) {
-                // do stuff
-              }
-            </code>
-          </pre>
-          <ul>
-            <li class="fragment">Transactional object store</li>
-            <li class="fragment">Good for structured, or larger sets of data</li>
-            <li class="fragment">Asynchronous?</li>
-          </ul>
+          <blockquote>
+            IndexedDB is a low-level API for client-side storage of significant amounts of structured data, including files/blobs. This
+            API uses indexes to enable high performance searches of this data.
+          </blockquote>
           <aside class="notes">
-            What exactly does a Transactional object store mean?
-            Is Asynchronous worth a mention?
-            Any use cases?
-            Show a DEMO
+            - better than local storage for larger / structured data sets<br />
+            - only storage available in service workers<br />
+            -- DEMO
           </aside>
         </section>
 
         <section>
           <h3>Notifications API</h3>
-          <pre>
-            <code data-trim>
-              Notification.requestPermission(status =>
-                console.log('Notification permission status:', status);
-              );
-            </code>
-          </pre>
-          <ul>
-            <li class="fragment">Allows displaying of custom notifications</li>
-            <li class="fragment">Requires user permission</li>
-            <li class="fragment">Can be sent from web page or service worker</li>
-          </ul>
+          <blockquote>
+             The Notifications API allows web pages to control the display of system notifications to the end user. These are outside
+            the top-level browsing context viewport, so can be displayed even when the user has switched tabs or moved to a
+            different app.
+          </blockquote>
           <aside class="notes">
+            - must request user permission
           </aside>
         </section>
 
         <section>
           <h3>Push API</h3>
-          <ul>
-            <li class="fragment">Allows app to recieve messages, even when not loaded</li>
-            <li class="fragment">Requires active service worker</li>
-            <li class="fragment">Generates unique subscription id and endpoint</li>
-          </ul>
+          <blockquote>
+            The Push API gives web applications the ability to receive messages pushed to them from a server, whether or not the web
+            app is in the foreground, or even currently loaded.
+          </blockquote>
           <aside class="notes">
-            Will probably be asked how this would be handled on the server side?
+            - subscription<br />
+            - Requires an active service worker to recieve messages.
           </aside>
         </section>
 
         <section>
           <h3>Thanks, any questions?</h3>
-          <pre class="fragment">
-            <code data-trim>
-              if (wentWell) {
-                applause();
-              }
-            </code>
-          </pre>
           <aside class="notes">
           </aside>
         </section>
