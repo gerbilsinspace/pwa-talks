@@ -4,13 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Taking your website offline</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -33,22 +33,20 @@
         <section>
           <h3>What are Progressive Web Apps Anyway?</h3>
           <blockquote>
-            Progressive web apps (PWAs) take traditional web sites/applications — with all of the advantages the web brings — and add
-            a number of features that give them many of the user experience advantages of native apps.
+            &ldquo; Progressive web apps (PWAs) take traditional web sites/applications — with all of the advantages the web brings — and add
+            a number of features that give them many of the user experience advantages of native apps &rdquo;
           </blockquote>
         </section>
 
         <section>
           <h3>App manifest</h3>
-          <ul>
-            <li>Defines app name and custom icons</li>
-            <li>If present (and secure), browser will prompt to add to home screen</li>
-          </ul>
+          <p>Defines app name and custom icons</p>
+          <p>If present (and secure), browser will prompt to add to home screen</p>
           <pre>
             <code data-trim>
 {
-  "name": "Digital Showcase",
-  "short_name": "Showcase",
+  "name": "My Cool App",
+  "short_name": "CoolApp",
   "icons": [{
     "src": "images/touch/icon-128x128.png",
     "sizes": "128x128",
@@ -63,50 +61,108 @@
           </pre>
         </section>
 
-        <section>
-          <h3>Service Worker</h3>
-          <blockquote>
-            Service workers essentially act as proxy servers that sit between web applications, the browser, and the network (when available).
-            They are intended, among other things, to enable the creation of effective offline experiences.
-          </blockquote>
+        <section class="stack">
+          <section>
+            <h3>Service Worker</h3>
+            <blockquote>
+              &ldquo; Service workers essentially act as proxy servers that sit between web applications, the browser, and the network
+              (when available). They are intended, among other things, to enable the creation of effective offline experiences. &rdquo;
+            </blockquote>
+          </section>
+          <section>
+            <p class="ciu_embed" data-feature="serviceworkers" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+              <a href="http://caniuse.com/#feat=serviceworkers">Can I Use serviceworkers?</a> Data on support for the serviceworkers feature across the major browsers from caniuse.com.
+            </p>
+          </section>
         </section>
 
         <section>
           <h3>Cache API</h3>
           <blockquote>
-            The Cache API is a system for storing and retrieving network requests and corresponding responses. These might be regular
+            &ldquo; The Cache API is a system for storing and retrieving network requests and corresponding responses. These might be regular
             requests and responses created in the course of running your application, or they could be created solely for the purpose
-            of storing some data in the cache.
+            of storing some data in the cache. &rdquo;
           </blockquote>
+        </section>
+
+        <section><h3>Demo time!</h3></section>
+
+        <section class="stack">
+          <section>
+            <h3>Indexed DB</h3>
+            <blockquote>
+              &ldquo; IndexedDB is a low-level API for client-side storage of significant amounts of structured data, including files/blobs. This
+              API uses indexes to enable high performance searches of this data. &rdquo;
+            </blockquote>
+          </section>
+          <section>
+            <p class="ciu_embed" data-feature="indexeddb" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+              <a href="http://caniuse.com/#feat=indexeddb">Can I Use indexeddb?</a> Data on support for the indexeddb feature across the major browsers from caniuse.com.
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <h3>... Another demo!</h3>
+        </section>
+
+        <section class="stack">
+          <section>
+            <h3>Notifications API</h3>
+            <blockquote>
+              &ldquo; The Notifications API allows web pages to control the display of system notifications to the end user. These are outside
+              the top-level browsing context viewport, so can be displayed even when the user has switched tabs or moved to a
+              different app. &rdquo;
+            </blockquote>
+          </section>
+          <section>
+            <p class="ciu_embed" data-feature="notifications" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+              <a href="http://caniuse.com/#feat=notifications">Can I Use notifications?</a> Data on support for the notifications feature across the major browsers from caniuse.com.
+            </p>
+          </section>
+        </section>
+
+        <section class="stack">
+          <section>
+            <h3>Push API</h3>
+            <blockquote>
+              &ldquo; The Push API gives web applications the ability to receive messages pushed to them from a server, whether or not the web
+              app is in the foreground, or even currently loaded. &rdquo;
+            </blockquote>
+          </section>
+          <section>
+            <p class="ciu_embed" data-feature="push-api" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+              <a href="http://caniuse.com/#feat=push-api">Can I Use push-api?</a> Data on support for the push-api feature across the major browsers from caniuse.com.
+            </p>
+          </section>
         </section>
         
         <section>
-          <h3>Indexed DB</h3>
-          <blockquote>
-            IndexedDB is a low-level API for client-side storage of significant amounts of structured data, including files/blobs. This
-            API uses indexes to enable high performance searches of this data.
-          </blockquote>
+          <h3>One last demo...</h3>
         </section>
 
         <section>
-          <h3>Notifications API</h3>
-          <blockquote>
-             The Notifications API allows web pages to control the display of system notifications to the end user. These are outside
-            the top-level browsing context viewport, so can be displayed even when the user has switched tabs or moved to a
-            different app.
-          </blockquote>
+          <h3>Some resources</h3>
+          <ul>
+            <li><a href="https://jakearchibald.github.io/isserviceworkerready">Is Service Worker Ready</a> 
+              <i style="font-size: 0.9em; margin: -6px 0 6px 0; display: block; color: #999;">https://jakearchibald.github.io/isserviceworkerready</i></li>
+            <li><a href="https://developers.google.com/web/tools/lighthouse/">Lighthouse tool</a> 
+              <i style="font-size: 0.9em; margin: -6px 0 6px 0; display: block; color: #999;">https://developers.google.com/web/tools/lighthouse/</i></li>
+            <li><a href="https://developers.google.com/web/fundamentals/codelabs/">Google Codelabs</a> 
+              <i style="font-size: 0.9em; margin: -6px 0 6px 0; display: block; color: #999;">https://developers.google.com/web/fundamentals/codelabs/</i></li>
+          </ul>
         </section>
 
         <section>
-          <h3>Push API</h3>
-          <blockquote>
-            The Push API gives web applications the ability to receive messages pushed to them from a server, whether or not the web
-            app is in the foreground, or even currently loaded.
-          </blockquote>
-        </section>
-
-        <section>
-          <h3>Thanks, any questions?</h3>
+          <h3>Thank you, any questions?</h3>
+          <pre class="fragment">
+            <code data-trim>
+if (presentation.wentWell()) {
+  applause()
+    .then(drink);
+}
+            </code>
+          </pre>
         </section>
       </div>
     </div>
@@ -131,6 +187,8 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
-		</script>
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/caniuse-embed.min.js"></script>
 	</body>
 </html>
