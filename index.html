@@ -19,7 +19,17 @@
 			link.type = 'text/css';
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+    </script>
+    
+    <style type="text/css">
+      .reveal cite {
+        width: 70%;
+        display: block;
+        text-align: right;
+        font-size: 0.8em;
+        margin: -10px auto 0 auto;
+      }
+    </style>
 	</head>
 	<body>
 		<div class="reveal">
@@ -39,9 +49,22 @@
         </section>
 
         <section>
+          <h3>Why would I want to do that?</h3>
+          <ul>
+            <li class="fragment">Its easy</li>
+            <li class="fragment">Better user experience on flaky connections</li>
+            <li class="fragment">Less load on the server</li>
+            <li class="fragment">Instant updates</li>
+            <li class="fragment">... theres more ...</li>
+          </ul>
+        </section>
+
+        <section>
           <h3>App manifest</h3>
-          <p>Defines app name and custom icons</p>
-          <p>If present (and secure), browser will prompt to add to home screen</p>
+          <ul>
+            <li>Defines name, icons etc</li>
+            <li>If present (and secure), browser may ask to add to home screen</li>
+          </ul>
           <pre>
             <code data-trim>
 {
@@ -52,10 +75,11 @@
     "sizes": "128x128",
     "type": "image/png"
   }],
-  "start_url": "/homescreen",
+  "start_url": "/",
+  "share_target": {},
   "display": "standalone",
-  "background_color": "#3E4EB8",
-  "theme_color": "#2F3BA2"
+  "background_color": "hotpink",
+  "theme_color": "black"
 }
             </code>
           </pre>
@@ -75,6 +99,20 @@
             </p>
           </section>
         </section>
+
+        <section class="stack">
+          <section>
+            <div>
+              <img src="img/sw1.png" />
+            </div>
+          </section>
+          <section>
+            <div>
+              <img src="img/sw2.png" />
+            </div>
+          </section>
+        </section>
+        
 
         <section>
           <h3>Cache API</h3>
@@ -134,6 +172,16 @@
             <p class="ciu_embed" data-feature="push-api" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
               <a href="http://caniuse.com/#feat=push-api">Can I Use push-api?</a> Data on support for the push-api feature across the major browsers from caniuse.com.
             </p>
+          </section>
+        </section>
+
+        <section class="stack">
+          <section>
+            <h3>Sync API</h3>
+            <blockquote>
+              &ldquo; Background sync lets you defer actions until the user has stable
+              connectivity. This is useful for ensuring that whatever the user wants to send, is actually sent. &rdquo;
+            </blockquote>
           </section>
         </section>
         
