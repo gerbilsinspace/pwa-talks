@@ -1,5 +1,7 @@
 # Progressive Web App Talk
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/gerbilsinspace/pwa-talks.svg)](https://greenkeeper.io/)
+
 Taking your website offline.
 
 ## Set up and build
